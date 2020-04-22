@@ -1,29 +1,50 @@
 package ui;
 
+import config.ConfigFactory;
+import config.GameConfig;
+import config.LayerConfig;
+
 import javax.swing.*;
 import java.awt.*;
+import java.lang.reflect.Constructor;
+import java.util.ArrayList;
+import java.util.List;
 
 public class JPanelGame extends JPanel {
-    private Layer[] lays = null;
-    public JPanelGame(){
-        lays = new Layer[]{
-                new LayerBackground(0,0,0,0),
-                new LayerDataBase(40,32,334,279),
-                new LayerDisk(40,343,334,279),
-                new LayerGame(414,32,334,590),
-                new LayerButton(788,32,334,124),
-                new LayerNext(788,188,176,148),
-                new LayerLevel(964,188,158,148),
-                new LayerPoint(788,368,334,200),
-        };
+    private List<Layer> layers = null;
+
+    public JPanelGame() {
+        try {
+            // 获得游戏配置
+            GameConfig cfg = ConfigFactory.getGameConfig();
+            // 获得层配置
+            List<LayerConfig> layersCfg = cfg.getLayersConfig();
+            // 创建游戏层数组
+            layers = new ArrayList<>(layersCfg.size());
+            // 创建所有层对象
+            for (LayerConfig layCfg : layersCfg) {
+                // 获得类对象
+                Class<?> cls = Class.forName(layCfg.getClassName());
+                // 获得构造函数
+                Constructor ctr = cls.getConstructor(int.class, int.class, int.class, int.class);
+                // 调用构造函数函数创建对象
+                Layer l = (Layer)ctr.newInstance(
+                        layCfg.getX(),layCfg.getY(),layCfg.getW(),layCfg.getH()
+                );
+                // 把创建对象放入集合
+                layers.add(l);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public void paintComponent(Graphics g){
+    public void paintComponent(Graphics g) {
         // 循环属性游戏画面
-        for(int i = 0;i < lays.length;i++){
+        for (int i = 0; i < layers.size(); i++) {
             // 刷新层窗口
-            lays[i].paint(g);
+            layers.get(i).paint(g);
         }
     }
 }
