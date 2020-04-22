@@ -6,8 +6,7 @@ import java.awt.*;
 /**
  * 绘制窗口
  */
-public abstract class Lay {
-
+public abstract class Layer {
     protected static final int PADDING = 16;
     protected static final int SIZE = 7;
 
@@ -34,7 +33,7 @@ public abstract class Lay {
      */
     protected int h;
 
-    protected Lay(int x, int y, int w, int h){
+    protected Layer(int x, int y, int w, int h){
         this.x = x;
         this.y = y;
         this.w = w;

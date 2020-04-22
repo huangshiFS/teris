@@ -2,8 +2,8 @@ package ui;
 
 import java.awt.*;
 
-public class LayButton extends Lay{
-    public LayButton(int x,int y,int w,int h){
+public class LayerButton extends Layer {
+    public LayerButton(int x, int y, int w, int h){
         super(x,y,w,h);
     }
     public void paint(Graphics g){

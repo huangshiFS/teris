@@ -3,8 +3,8 @@ package ui;
 import javax.swing.*;
 import java.awt.*;
 
-public class FrameGame extends JFrame {
-    public FrameGame(){
+public class JFrameGame extends JFrame {
+    public JFrameGame(){
         // 设置标题
         this.setTitle("Java俄罗斯方块");
         // 设置默认关闭属性（程序结束）
@@ -21,6 +21,6 @@ public class FrameGame extends JFrame {
         int y = (screen.height - this.getHeight())/2 - 32;
         this.setLocation(x,y);
         // 谁在默认Panel
-        this.setContentPane(new PanelGame());
+        this.setContentPane(new JPanelGame());
     }
 }
