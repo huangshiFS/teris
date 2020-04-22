@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class LayDisk extends Lay{
     private static Image IMG_DISK = new ImageIcon("graphics/string/disk.png").getImage();
-    public LayDisk(int x,int y,int w,int h){
+    protected LayDisk(int x,int y,int w,int h){
         super(x,y,w,h);
     }
 
