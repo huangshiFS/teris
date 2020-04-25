@@ -2,6 +2,7 @@ package ui;
 
 import config.ConfigFactory;
 import config.GameConfig;
+import dto.GameDto;
 
 import javax.swing.*;
 import java.awt.*;
@@ -43,6 +44,10 @@ public abstract class Layer {
      */
     protected int h;
 
+    /**
+     * 游戏数据
+     */
+    protected GameDto dto = null;
     protected Layer(int x, int y, int w, int h) {
         this.x = x;
         this.y = y;
@@ -74,6 +79,10 @@ public abstract class Layer {
         g.drawImage(WINDOW_IMG, x + w - SIZE, y + h - SIZE, x + w, y + h, WINDOW_W - SIZE, WINDOW_H - SIZE, WINDOW_W, WINDOW_H, null);
 
 
+    }
+
+    public void setDto(GameDto dto) {
+        this.dto = dto;
     }
 
     /**
