@@ -2,6 +2,7 @@ package dto;
 
 import entity.GameAct;
 
+import java.awt.*;
 import java.util.List;
 
 public class GameDto {
@@ -32,6 +33,20 @@ public class GameDto {
      */
     private int nowPoint;
 
+    /**
+     * 构造函数
+     */
+    public GameDto(){
+        dtoInit();
+    }
+    /**
+     * dto初始化
+     */
+    public void dtoInit(){
+        // TODO 硬编码
+        this.gameMap = new boolean[10][18];
+        // TODO 初始化所有游戏对象
+    }
     public List<Player> getDbRecode() {
         return dbRecode;
     }
